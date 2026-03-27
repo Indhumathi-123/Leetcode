@@ -1,0 +1,22 @@
+#include <stdio.h>
+#include <string.h>
+
+char* longestCommonPrefix(char** strs, int strsSize) {
+    if (strsSize == 0) return "";
+    
+    // Use the first string as the base reference
+    for (int i = 0; strs[0][i] != '\0'; i++) {
+        char current_char = strs[0][i];
+        
+        // Check this character against all other strings
+        for (int j = 1; j < strsSize; j++) {
+            // If we reach the end of a string or find a mismatch
+            if (strs[j][i] == '\0' || strs[j][i] != current_char) {
+                strs[0][i] = '\0'; // Truncate the first string here
+                return strs[0];
+            }
+        }
+    }
+    
+    return strs[0];
+}
