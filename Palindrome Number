@@ -1,0 +1,23 @@
+#include<stdbool.h>
+bool isPalindrome(int num) 
+{
+    int rem;
+    long sum=0;
+    int temp=num;
+    if(num<0){
+        return false;
+    }
+    while(num!=0)
+    {
+        rem=num%10;
+        sum =(sum*10)+rem;
+        num=num/10;
+    }
+    if(temp==sum)
+    {
+        return true;
+    }
+    else{
+        return false;
+    }
+}
