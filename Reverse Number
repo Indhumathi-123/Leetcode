@@ -1,0 +1,22 @@
+#include <limits.h>
+
+int reverse(int num) {
+    int sum = 0;
+    
+    while (num != 0) {
+        int rem = num % 10;
+        num /= 10;
+
+        // Check for Overflow before multiplying by 10
+        // INT_MAX is 2147483647. If sum > 214748364, then sum * 10 will overflow.
+        if (sum > INT_MAX / 10 || (sum == INT_MAX / 10 && rem > 7)) return 0;
+        
+        // Check for Underflow
+        // INT_MIN is -2147483648.
+        if (sum < INT_MIN / 10 || (sum == INT_MIN / 10 && rem < -8)) return 0;
+
+        sum = (sum * 10) + rem;
+    }
+
+    return sum;
+}
